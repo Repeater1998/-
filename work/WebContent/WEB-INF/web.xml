@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <servlet>
+    <servlet-name>VaildateServlet</servlet-name>
+    <servlet-class>Servlet.VaildateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VaildateServlet</servlet-name>
+    <url-pattern>/work/src/Servlet/VaildateServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>Servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/work/src/Servlet/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>Servlet.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/work/src/Servlet/RegisterServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>UploadServlet</servlet-name>
+  	<servlet-class>Servlet.UploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UploadServlet</servlet-name>
+  	<url-pattern>/work/src/Servlet/UploadServlet</url-pattern>
+  </servlet-mapping>
+  
+  <context-param>
+        <param-name>userSessionKey</param-name>
+        <param-value>account</param-value>
+    </context-param>
+    <!--若未登录，需要重定向的页面-->
+    <context-param>
+        <param-name>redirectPage</param-name>
+        <param-value>/login.jsp</param-value>
+    </context-param>
+    <!--不需要拦截的URL列表;注意配置时不要拦截后台对用户和密码判断的页面,否则可能登录登录不进主界面-->
+    <context-param>
+        <param-name>uncheckedUrls</param-name>
+        <param-value>/login.jsp,Servlet,/vaildate.jsp,/register.jsp,/download.jsp,/about_us.jsp,.css</param-value>
+    </context-param>
+
+  <filter>
+  	<filter-name>EncodingFilter</filter-name>
+  	<filter-class>Filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>EncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>  
+  
+  <filter>
+  	<filter-name>Authentication</filter-name>
+  	<filter-class>Filter.Authentication</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>Authentication</filter-name>
+  	<url-pattern>/jsp/*</url-pattern>
+  </filter-mapping>
+  
+</web-app>

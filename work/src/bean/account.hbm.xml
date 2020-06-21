@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2019/10/18 ???? 08:26:33 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="bean.account" table="ACCOUNT">
+        <id name="account" type="java.lang.String" access="field">
+            <column name="ACCOUNT" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="java.lang.String" access="field">
+            <column name="PASSWORD" />
+        </property>
+    </class>
+</hibernate-mapping>
